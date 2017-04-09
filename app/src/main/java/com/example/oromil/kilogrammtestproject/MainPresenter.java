@@ -54,8 +54,8 @@ public class MainPresenter {
             public void onError(Throwable e) {
                 Log.d("Request", "Error");
                 Log.d("onError: ", e+"");
-
-                    activity.updateAdapter(getFromRealm());
+                getFromRealm();
+                    activity.updateAdapter(songs);
 
                 activity.showLoading(false);
                 Toast.makeText(activity, "Could not update data\n" +
@@ -83,9 +83,13 @@ public class MainPresenter {
         });
     }
 
-    private Object[] getFromRealm(){
-
-        return realm.where(Song.class).findAll().toArray();
+    private void getFromRealm(){
+        Object[] list = realm.where(Song.class).findAll().toArray();
+        songs.clear();
+        for (Object song:list) {
+            Song s = (Song) song;
+            songs.add(s);
+        }
     }
 
     public void addSongsToList(List<MyResponse>myResponses){

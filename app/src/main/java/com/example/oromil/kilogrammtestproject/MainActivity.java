@@ -59,22 +59,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateAdapter(Object[] list){
-        ArrayList<Song>songList = new ArrayList<>();
-        for (Object song:list) {
-            Song s = (Song) song;
-            songList.add(s);
-        }
-        Log.d("SongInRealm", songList.size()+"");
-        if (recyclerView.getAdapter()==null){
-            adapter = new MyAdapter(songList, this);
-            recyclerView.setAdapter(adapter);
-        } else {
-            adapter.setSongs(songList);
-            adapter.notifyDataSetChanged();
-            Log.d("Adapter: ", "Adapter updated");
-        }
-    }
 
     public void showLoading(boolean show){
         swipe.setRefreshing(show);

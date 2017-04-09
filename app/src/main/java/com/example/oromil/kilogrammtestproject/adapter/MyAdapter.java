@@ -73,18 +73,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             lastPosition = -1;
     }
 
-    public void setSongs(ArrayList<Song> realmSongs){
-        this.songs = realmSongs;
-            lastPosition = -1;
-    }
-
     private void setAnimation(View viewToAnimate, int position)
     {
         if (position > lastPosition)
         {
             Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.slid_in_up);
                 viewToAnimate.startAnimation(animation1);
-                if (position!=6)  //// FIXME: 09.04.2017 if lastPosition = 6, we get an error:"queuebuffer error queuing buffer to surfacetexture -19"
                     lastPosition = position;
                 Log.d("Last position", lastPosition+"");
 
